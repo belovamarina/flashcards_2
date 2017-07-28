@@ -25,6 +25,7 @@ gem 'newrelic_rpm'
 gem 'nokogiri'
 gem 'rails_12factor', group: :production
 gem 'rake'
+gem 'responders'
 gem 'rollbar'
 gem 'routing-filter'
 gem 'seedbank'

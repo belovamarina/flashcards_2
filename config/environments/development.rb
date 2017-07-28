@@ -46,4 +46,5 @@ Rails.application.configure do
   }
 
   config.action_mailer.default_url_options = { host: '127.0.0.2:3000', port: 3000 }
+  config.active_record.raise_in_transactional_callbacks = true
 end
