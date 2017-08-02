@@ -3,7 +3,7 @@ class Dashboard::CardsController < Dashboard::BaseController
   respond_to :html
 
   def index
-    @cards = current_user.cards.all.order('review_date')
+    @cards = current_user.cards.order('review_date')
   end
 
   def new
@@ -35,10 +35,6 @@ class Dashboard::CardsController < Dashboard::BaseController
   end
 
   private
-
-  def set_card
-    @card = current_user.cards.find(params[:id])
-  end
 
   def card_params
     params.require(:card).permit(:original_text, :translated_text, :review_date,

@@ -1,15 +1,13 @@
 class Dashboard::TrainerController < Dashboard::BaseController
+  before_action :set_card, if: :has_params_id?
+
   def index
-    if params[:id]
-      @card = current_user.cards.find(params[:id])
+    if current_user.current_block
+      @card = current_user.current_block.cards.pending.first
+      @card ||= current_user.current_block.cards.repeating.first
     else
-      if current_user.current_block
-        @card = current_user.current_block.cards.pending.first
-        @card ||= current_user.current_block.cards.repeating.first
-      else
-        @card = current_user.cards.pending.first
-        @card ||= current_user.cards.repeating.first
-      end
+      @card = current_user.cards.pending.first
+      @card ||= current_user.cards.repeating.first
     end
 
     respond_to do |format|
@@ -19,8 +17,6 @@ class Dashboard::TrainerController < Dashboard::BaseController
   end
 
   def review_card
-    @card = current_user.cards.find(params[:card_id])
-
     check_result = @card.check_translation(trainer_params[:user_translation])
 
     if check_result[:state]
@@ -43,5 +39,9 @@ class Dashboard::TrainerController < Dashboard::BaseController
 
   def trainer_params
     params.permit(:user_translation)
+  end
+
+  def has_params_id?
+    params[:id] || params[:card_id]
   end
 end
