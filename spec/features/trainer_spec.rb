@@ -311,4 +311,3 @@ RSpec.feature 'User card trainer', type: :feature do
     end
   end
 end
-

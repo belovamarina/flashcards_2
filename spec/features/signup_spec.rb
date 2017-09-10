@@ -26,12 +26,11 @@ RSpec.feature 'User Registration', type: :feature do
     expect(page).to have_content 'Короткое значение.'
   end
 
-
-   scenario 'password_confirmation is too short' do
-     user = build(:user, password_confirmation: '2')
-     register(user, 'Зарегистрироваться')
-     expect(page).to have_content 'Значения не совпадают.'
-   end
+  scenario 'password_confirmation is too short' do
+    user = build(:user, password_confirmation: '2')
+    register(user, 'Зарегистрироваться')
+    expect(page).to have_content 'Значения не совпадают.'
+  end
 
   scenario 'not uniq email' do
     user = build(:user, email: 'test@test.com')

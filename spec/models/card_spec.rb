@@ -12,56 +12,56 @@ describe Card do
       card = build(:card, translated_text: '')
       card.valid?
       expect(card.errors[:translated_text])
-          .to include('Необходимо заполнить поле.')
+        .to include('Необходимо заполнить поле.')
     end
 
     it 'create card with empty texts' do
       card = build(:card, original_text: '', translated_text: '')
       card.valid?
       expect(card.errors[:original_text])
-          .to include('Вводимые значения должны отличаться.')
+        .to include('Вводимые значения должны отличаться.')
     end
 
     it 'equal_texts Eng' do
       card = build(:card, original_text: 'house', translated_text: 'house')
       card.valid?
       expect(card.errors[:original_text])
-          .to include('Вводимые значения должны отличаться.')
+        .to include('Вводимые значения должны отличаться.')
     end
 
     it 'equal_texts Rus' do
       card = build(:card, original_text: 'дом', translated_text: 'дом')
       card.valid?
       expect(card.errors[:original_text])
-          .to include('Вводимые значения должны отличаться.')
+        .to include('Вводимые значения должны отличаться.')
     end
 
     it 'full_downcase Eng' do
       card = build(:card, original_text: 'hOuse', translated_text: 'houSe')
       card.valid?
       expect(card.errors[:original_text])
-          .to include('Вводимые значения должны отличаться.')
+        .to include('Вводимые значения должны отличаться.')
     end
 
     it 'full_downcase Rus' do
       card = build(:card, original_text: 'Дом', translated_text: 'доМ')
       card.valid?
       expect(card.errors[:original_text])
-          .to include('Вводимые значения должны отличаться.')
+        .to include('Вводимые значения должны отличаться.')
     end
 
     it 'create card witout user_id' do
       card = build(:card, user_id: nil)
       card.valid?
       expect(card.errors[:user_id])
-          .to include('Ошибка ассоциации.')
+        .to include('Ошибка ассоциации.')
     end
 
     it 'create card witout block_id' do
       card = build(:card, block_id: nil)
       card.valid?
       expect(card.errors[:block_id])
-          .to include('Выберите колоду из выпадающего списка.')
+        .to include('Выберите колоду из выпадающего списка.')
     end
   end
 
