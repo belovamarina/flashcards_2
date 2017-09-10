@@ -234,7 +234,7 @@ RSpec.feature 'User card trainer', type: :feature do
       before do
         user = create(:user_with_two_blocks_and_two_cards_in_each)
         block = user.blocks.first
-        user.set_current_block(block)
+        user.current_block = block
         card = user.cards.find_by(block_id: block.id)
         card.update_attribute(:review_date, Time.now - 3.days)
         visit trainer_path
@@ -276,7 +276,7 @@ RSpec.feature 'User card trainer', type: :feature do
       before do
         user = create(:user_with_two_blocks_and_one_card_in_each)
         block = user.blocks.first
-        user.set_current_block(block)
+        user.current_block = block
         card = user.cards.find_by(block_id: block.id)
         card.update_attribute(:review_date, Time.now - 3.days)
         visit trainer_path

@@ -21,11 +21,11 @@ class User < ApplicationRecord
                      inclusion: { in: I18n.available_locales.map(&:to_s),
                                   message: 'Выберите локаль из выпадающего списка.' }
 
-  def has_linked_github?
+  def linked_github?
     authentications.where(provider: 'github').present?
   end
 
-  def set_current_block(block)
+  def current_block=(block)
     update_attribute(:current_block_id, block.id)
   end
 

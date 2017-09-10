@@ -22,7 +22,7 @@ class Card < ApplicationRecord
     distance = Levenshtein.distance(full_downcase(translated_text),
                                     full_downcase(user_translation))
 
-    sm_hash = SuperMemo.algorithm(interval, repeat, efactor, attempt, distance, 1)
+    sm_hash = SuperMemo.algorithm(self, distance, 1)
 
     if distance <= 1
       sm_hash[:review_date] = Time.now + interval.to_i.days
@@ -52,9 +52,8 @@ class Card < ApplicationRecord
   end
 
   def texts_are_not_equal
-    if full_downcase(original_text) == full_downcase(translated_text)
-      errors.add(:original_text, 'Вводимые значения должны отличаться.')
-    end
+    return unless full_downcase(original_text) == full_downcase(translated_text)
+    errors.add(:original_text, 'Вводимые значения должны отличаться.')
   end
 
   def full_downcase(str)
