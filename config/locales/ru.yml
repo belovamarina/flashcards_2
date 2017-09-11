@@ -45,3 +45,7 @@ ru:
         confirmation: 'Значения не совпадают.'
         taken: 'Не уникальное значение.'
         invalid: 'Не верный формат.'
+        record_invalid: "Валидация провалена: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "Невозможно удалить, т.к. существует зависимость с %{record}"
+          has_many: "Невозможно удалить, т.к. существует зависимость с %{record}"

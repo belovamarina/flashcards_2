@@ -16,5 +16,8 @@
 /tmp
 .idea/*
 config/database.yml
+config/secrets.yml
 config/application.yml
 public/uploads/
+.byebug_history
+.env

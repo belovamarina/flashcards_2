@@ -4,13 +4,13 @@
 
 class SuperMemo
   class << self
-    def algorithm(interval, repeat, efactor, attempt, distance, distance_limit)
-      quality = set_quality(attempt, distance, distance_limit)
-      efactor = set_efactor(efactor, quality)
+    def algorithm(card, distance, distance_limit)
+      quality = set_quality(card.attempt, distance, distance_limit)
+      efactor = set_efactor(card.efactor, quality)
       sm_hash = if quality >= 3
-                  set_interval(interval, repeat + 1, efactor)
+                  set_interval(card.interval, card.repeat + 1, efactor)
                 else
-                  set_interval(interval, 1, efactor)
+                  set_interval(card.interval, 1, efactor)
                 end
       sm_hash.merge!(quality: quality)
     end
@@ -25,7 +25,7 @@ class SuperMemo
     end
 
     def set_efactor(efactor, quality)
-      efactor = efactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02))
+      efactor += (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02))
       efactor < 1.3 ? 1.3 : efactor
     end
 

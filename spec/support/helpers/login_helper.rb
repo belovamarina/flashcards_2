@@ -1,16 +1,18 @@
 module LoginHelper
-  def login(email, password, action)
+  def login(user, email = nil, pass = nil, action)
     click_link action
-    fill_in 'email', with: email
-    fill_in 'password', with: password
+    fill_in 'email', with: email || user.email
+    fill_in 'password', with: pass || '12345'
     click_button action
+    user
   end
 
-  def register(email, password, password_confirmation, action)
+  def register(user, action)
     visit new_user_path
-    fill_in 'user[email]', with: email
-    fill_in 'user[password]', with: password
-    fill_in 'user[password_confirmation]', with: password_confirmation
+    fill_in 'user[email]', with: user.email
+    fill_in 'user[password]', with: user.password
+    fill_in 'user[password_confirmation]', with: user.password_confirmation
     click_button action
+    user
   end
 end
