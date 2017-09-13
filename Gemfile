@@ -24,6 +24,7 @@ gem 'listen'
 gem 'mini_magick'
 gem 'newrelic_rpm'
 gem 'nokogiri'
+gem 'puma'
 gem 'rails_12factor', group: :production
 # gem 'rails-i18n', '~> 5.0.0'
 gem 'rake'
