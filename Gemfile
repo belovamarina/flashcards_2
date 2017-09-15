@@ -26,6 +26,7 @@ gem 'newrelic_rpm'
 gem 'nokogiri'
 gem 'puma'
 gem 'rails_12factor', group: :production
+gem 'rails_admin', '~> 1.2'
 # gem 'rails-i18n', '~> 5.0.0'
 gem 'rake'
 gem 'responders'

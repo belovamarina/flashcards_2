@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   filter :locale
 
-  root 'main#index'
+  root to: 'main#index'
 
   scope module: 'home' do
     resources :user_sessions, only: [:new, :create]
