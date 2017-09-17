@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   protect_from_forgery with: :exception
   before_action :set_locale
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   # Overwrite the method sorcery calls when it
   # detects a non-authenticated request.
@@ -23,5 +25,10 @@ class ApplicationController < ActionController::Base
 
   def default_url_options(options = {})
     { locale: I18n.locale }.merge options
+  end
+
+  def user_not_authorized
+    flash[:alert] = 'You are not authorized to perform this action.'
+    redirect_to(request.referrer || main_app.root_path)
   end
 end
