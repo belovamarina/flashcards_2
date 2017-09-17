@@ -55,5 +55,11 @@ FactoryGirl.define do
         create(:block_with_two_cards, user: user)
       end
     end
+
+    factory :user_admin do
+      after(:create) do |user|
+        user.add_role :admin
+      end
+    end
   end
 end
