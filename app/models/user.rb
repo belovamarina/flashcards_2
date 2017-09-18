@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  rolify role_cname: 'Admin'
   has_many :cards, dependent: :destroy
   has_many :blocks, dependent: :destroy
   has_many :authentications, dependent: :destroy
