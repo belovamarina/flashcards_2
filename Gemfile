@@ -17,6 +17,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'carrierwave'
 gem 'faraday'
 gem 'figaro'
+gem 'flickr-objects'
 gem 'fog-aws'
 gem 'http_accept_language'
 gem 'levenshtein'
@@ -43,6 +44,8 @@ gem 'whenever', require: false
 group :development, :test do
   gem 'byebug'
   gem 'capybara'
+  gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'webmock'
 end

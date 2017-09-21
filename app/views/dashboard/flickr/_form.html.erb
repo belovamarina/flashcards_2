@@ -1,0 +1,4 @@
+<%= simple_form_for :flickr, { remote: true, url: '/search_photos' } do |f| %>
+    <%= f.input :text, label: 'Что ищем?', input_html: { class: 'form-control' } %>
+    <%= f.button :submit, 'Найти фото' %>
+<% end %>

@@ -15,6 +15,10 @@
     <%= f.input :image_cache, as: :hidden %>
   </div>
 
+  <div class="form-group" id="remote-image-url">
+    <%= f.input :remote_image_url, label: 'Ссылка на изображение', input_html: { class: 'form-control' } %>
+  </div>
+
   <div class="form-group">
     <%= f.input :block_id, collection: current_user.blocks.all.order('title'),
                       prompt: 'Выберите колоду', label: 'Колоды',
