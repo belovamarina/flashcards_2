@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
     put 'review_card' => 'trainer#review_card'
     get 'trainer' => 'trainer#index'
+    post 'search_photos' => 'flickr#search_photos'
 
     get 'profile/:id/edit' => 'profile#edit', as: :edit_profile
     put 'profile/:id' => 'profile#update', as: :profile
