@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/belovamarina/api_flashcards
+  revision: 0018b79f85e11f3da4495ea2864bde762b67ffcf
+  branch: auth
+  specs:
+    api_flashcards (0.1.0)
+      rails (~> 5.1)
+      sorcery
+
+GIT
   remote: https://github.com/sudosu/rails_admin_pundit
   revision: 8e3e750a3df5ce41722480494079968915ae84ce
   specs:
@@ -320,6 +329,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  api_flashcards!
   byebug
   capybara
   carrierwave

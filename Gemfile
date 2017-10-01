@@ -49,3 +49,5 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'webmock'
 end
+
+gem 'api_flashcards', git: 'https://github.com/belovamarina/api_flashcards', branch: 'auth'
