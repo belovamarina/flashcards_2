@@ -10,12 +10,14 @@ describe 'API flashcards', type: :request do
 
     it 'GET main#index' do
       get '/api', headers: @env
-      expect(response.body).to match(/Welcome/)
+      json = JSON.parse(response.body)
+      expect(json['message']).to eq('Welcome!')
     end
 
     it 'GET #cards/index' do
       get '/api/v1/cards', headers: @env
-      expect(response.body).to match(/original_text/)
+      json = JSON.parse(response.body).first
+      expect(json.keys).to include('id', 'original_text', 'translated_text', 'block_id')
     end
 
     it 'POST #cards/index' do
@@ -26,13 +28,15 @@ describe 'API flashcards', type: :request do
 
     it 'GET #trainer' do
       get '/api/v1/trainer', headers: @env
-      expect(response.body).to match(/original_text/)
+      json = JSON.parse(response.body)
+      expect(json.keys).to include('id', 'original_text', 'translated_text', 'block_id')
     end
 
     it 'PUT #review_card' do
       trainer_params = { user_translation: 'house', card_id: user.cards.first.id }
       put '/api/v1/review_card', headers: @env, params: trainer_params
-      expect(response.body).to match(/state/)
+      json = JSON.parse(response.body)
+      expect(json).to have_key('state')
     end
   end
 
