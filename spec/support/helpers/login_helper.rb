@@ -15,4 +15,9 @@ module LoginHelper
     click_button action
     user
   end
+
+  def basic_auth(email, pass)
+    @env ||= {}
+    @env['AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(email, pass)
+  end
 end
