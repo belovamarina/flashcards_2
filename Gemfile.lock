@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/belovamarina/api_flashcards
-  revision: 0018b79f85e11f3da4495ea2864bde762b67ffcf
-  branch: auth
+  revision: 51ec9c6f7c33c30d72619cd0a4fae78eefc51bf7
+  branch: api
   specs:
     api_flashcards (0.1.0)
       rails (~> 5.1)

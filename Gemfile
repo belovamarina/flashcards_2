@@ -50,4 +50,4 @@ group :development, :test do
   gem 'webmock'
 end
 
-gem 'api_flashcards', git: 'https://github.com/belovamarina/api_flashcards', branch: 'auth'
+gem 'api_flashcards', git: 'https://github.com/belovamarina/api_flashcards', branch: 'api'
