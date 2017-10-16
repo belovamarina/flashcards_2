@@ -37,6 +37,7 @@ gem 'rolify'
 gem 'rollbar'
 gem 'routing-filter'
 gem 'seedbank'
+gem 'sidekiq'
 gem 'simple_form'
 gem 'sorcery'
 gem 'whenever', require: false
