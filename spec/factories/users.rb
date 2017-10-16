@@ -10,49 +10,33 @@ FactoryGirl.define do
     locale 'ru'
     current_block_id ''
 
-    factory :user_with_one_block_without_cards do
-      after(:create) do |user|
-        create(:block, user: user)
+    trait :with_blocks do
+      transient do
+        count 1
+      end
+
+      after(:create) do |user, evaluator|
+        create_list(:block, evaluator.count, user: user)
       end
     end
 
-    factory :user_with_two_blocks_without_cards do
-      after(:create) do |user|
-        create(:block, user: user)
-        create(:block, user: user)
+    trait :with_blocks_and_card do
+      transient do
+        count 1
+      end
+
+      after(:create) do |user, evaluator|
+        create_list(:block, evaluator.count, :with_one_card, user: user)
       end
     end
 
-    factory :user_with_one_block_and_one_card do
-      after(:create) do |user|
-        create(:block_with_one_card, user: user)
+    trait :with_blocks_and_cards do
+      transient do
+        count 1
       end
-    end
 
-    factory :user_with_one_block_and_two_cards do
-      after(:create) do |user|
-        create(:block_with_two_cards, user: user)
-      end
-    end
-
-    factory :user_with_two_blocks_and_one_card_in_each do
-      after(:create) do |user|
-        create(:block_with_one_card, user: user)
-        create(:block_with_one_card, user: user)
-      end
-    end
-
-    factory :user_with_two_blocks_and_only_one_card do
-      after(:create) do |user|
-        create(:block, user: user)
-        create(:block_with_one_card, user: user)
-      end
-    end
-
-    factory :user_with_two_blocks_and_two_cards_in_each do
-      after(:create) do |user|
-        create(:block_with_two_cards, user: user)
-        create(:block_with_two_cards, user: user)
+      after(:create) do |user, evaluator|
+        create_list(:block, evaluator.count, :with_two_cards, user: user)
       end
     end
 
