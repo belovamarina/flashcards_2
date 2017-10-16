@@ -12,7 +12,7 @@ RSpec.feature 'User card trainer', type: :feature do
 
   feature 'review cards with one block' do
     scenario 'training without cards' do
-      user = create(:user_with_one_block_without_cards)
+      user = create(:user, :with_blocks, count: 1)
       visit trainer_path
       login(user, 'Войти')
       expect(page).to have_content 'Ожидайте наступления даты пересмотра.'
@@ -20,11 +20,10 @@ RSpec.feature 'User card trainer', type: :feature do
 
     feature 'training with two cards' do
       before do
-        user = create(:user_with_one_block_and_two_cards)
+        user = create(:user, :with_blocks_and_cards, count: 2)
 
         user.cards.each do |card|
-          card.update_attribute(:review_date,
-                                Time.now - 3.days)
+          card.update_attribute(:review_date, Time.now)
         end
 
         visit trainer_path
@@ -64,7 +63,7 @@ RSpec.feature 'User card trainer', type: :feature do
 
     feature 'training with one card' do
       before do
-        user = create(:user_with_one_block_and_one_card)
+        user = create(:user, :with_blocks_and_card)
         user.cards.each do |card|
           card.update_attribute(:review_date,
                                 Time.now - 3.days)
@@ -126,7 +125,7 @@ RSpec.feature 'User card trainer', type: :feature do
   feature 'review cards with two blocks' do
     feature 'training without cards' do
       before do
-        user = create(:user_with_two_blocks_without_cards)
+        user = create(:user, :with_blocks, count: 2)
         visit trainer_path
         login(user, 'Войти')
       end
@@ -138,7 +137,7 @@ RSpec.feature 'User card trainer', type: :feature do
 
     feature 'training with two cards' do
       before do
-        user = create(:user_with_two_blocks_and_one_card_in_each)
+        user = create(:user, :with_blocks_and_card, count: 2)
         user.cards.each do |card|
           card.update_attribute(:review_date,
                                 Time.now - 3.days)
@@ -180,7 +179,7 @@ RSpec.feature 'User card trainer', type: :feature do
 
     feature 'training with one card' do
       before do
-        user = create(:user_with_two_blocks_and_only_one_card)
+        user = create(:user, :with_blocks_and_card)
         user.cards.each do |card|
           card.update_attribute(:review_date,
                                 Time.now - 3.days)
@@ -220,7 +219,7 @@ RSpec.feature 'User card trainer', type: :feature do
   feature 'review cards with current_block' do
     feature 'training without cards' do
       before do
-        user = create(:user_with_two_blocks_without_cards, current_block_id: 1)
+        user = create(:user, :with_blocks, count: 1, current_block_id: 1)
         visit trainer_path
         login(user, 'Войти')
       end
@@ -232,7 +231,7 @@ RSpec.feature 'User card trainer', type: :feature do
 
     feature 'training with two cards' do
       before do
-        user = create(:user_with_two_blocks_and_two_cards_in_each)
+        user = create(:user, :with_blocks_and_cards, count: 2)
         block = user.blocks.first
         user.current_block = block
         card = user.cards.find_by(block_id: block.id)
@@ -274,7 +273,7 @@ RSpec.feature 'User card trainer', type: :feature do
 
     feature 'training with one card' do
       before do
-        user = create(:user_with_two_blocks_and_one_card_in_each)
+        user = create(:user, :with_blocks_and_card, count: 2)
         block = user.blocks.first
         user.current_block = block
         card = user.cards.find_by(block_id: block.id)

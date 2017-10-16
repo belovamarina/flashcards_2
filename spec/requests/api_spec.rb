@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'API flashcards', type: :request do
-  let(:user) { create(:user_with_one_block_and_one_card) }
+  let(:user) { create(:user, :with_blocks_and_card) }
 
   context 'requests with success authentication' do
     before do
