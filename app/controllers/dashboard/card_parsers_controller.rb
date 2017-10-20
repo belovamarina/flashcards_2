@@ -3,11 +3,13 @@ module Dashboard
     def new; end
 
     def create
-      @result = CardParserJob.perform_now(current_user, normalize(parser_params))
-      if @result.present? && @result.is_a?(Array)
+      job = CardParserJob.perform_later(current_user.id, normalize(parser_params))
+      byebug
+      @result = Card.where(created_at: 3.minutes.ago..Time.current)
+      if job.present?
         render :show
       else
-        redirect_to new_card_parser_path, alert: "Не удалось собрать карточки #{@result&.message}"
+        redirect_to new_card_parser_path, alert: "Не удалось собрать карточки #{job}"
       end
     end
 

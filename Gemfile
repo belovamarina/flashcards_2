@@ -38,6 +38,7 @@ gem 'rollbar'
 gem 'routing-filter'
 gem 'seedbank'
 gem 'sidekiq'
+gem 'sidekiq-status'
 gem 'simple_form'
 gem 'sorcery'
 gem 'whenever', require: false
@@ -47,6 +48,7 @@ group :development, :test do
   gem 'capybara'
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
+  gem 'pry'
   gem 'rspec-rails'
   gem 'webmock'
 end
