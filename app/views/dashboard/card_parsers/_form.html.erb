@@ -1,0 +1,26 @@
+<%= form_tag card_parsers_path, method: :post do %>
+    <div class="form-group">
+      <%= label_tag '', 'Откуда брать карточки' %>
+      <%= text_area_tag :url, 'http://masterrussian.com/vocabulary/most_common_words_5.htm',
+                        class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag '', 'Путь к оригиналу' %>
+      <%= text_area_tag :original_xpath, "//tr[@class='rowFirst']/td[@class='word']",
+                        class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag '', 'Путь к переводу' %>
+      <%= text_area_tag :translated_xpath, "//tr[@class='rowFirst']/td[3]",
+                        class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag '', 'Выбрать блок' %>
+      <%= select_tag :block_id, options_from_collection_for_select(current_user.blocks, 'id', 'title') %>
+    </div>
+
+    <%= submit_tag 'Собрать карточки', class: 'btn btn-default' %>
+<% end %>

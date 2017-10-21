@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount ApiFlashcards::Engine => '/api'
+  mount ActionCable.server => '/cable'
+
   filter :locale
 
   root to: 'main#index'
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
     post 'logout' => 'user_sessions#destroy', :as => :logout
 
     resources :cards
+    resources :card_parsers, only: [:new, :create, :show]
 
     resources :blocks do
       member do

@@ -5,6 +5,7 @@
 
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  <%= action_cable_meta_tag %>
   <%= csrf_meta_tags %>
 </head>
 
@@ -13,8 +14,8 @@
   <%= render 'shared/header' %>
   <div class="row" id="middle">
     <div id="notice_block">
-    <%= render 'shared/alert_notice' %>
-  </div>
+      <%= render 'shared/alert_notice' %>
+    </div>
   <div class="col-sm-12">
     <%= yield %>
   </div>
