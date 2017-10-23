@@ -48,9 +48,10 @@ group :development, :test do
   gem 'capybara'
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
+  gem 'poltergeist'
   gem 'pry'
   gem 'rspec-rails'
   gem 'webmock'
 end
 
-gem 'api_flashcards', git: 'https://github.com/belovamarina/api_flashcards', branch: 'api'
+gem 'api_flashcards', git: 'https://github.com/belovamarina/api_flashcards'

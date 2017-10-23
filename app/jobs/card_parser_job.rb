@@ -7,7 +7,7 @@ class CardParserJob < ApplicationJob
   def perform(user_id, url:, original_xpath:, translated_xpath:, block_id:)
     parser = CardParser.new(url, original_xpath, translated_xpath)
     words = parser.parse
-    raise StandardError, "#{parser.error}" if parser.error
+    raise StandardError, parser.error if parser.error
     build_cards(words, user_id, block_id)
     broadcast_message(message: 'Закончили собирать карточки')
   end

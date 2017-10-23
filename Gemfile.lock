@@ -1,7 +1,6 @@
 GIT
   remote: https://github.com/belovamarina/api_flashcards
-  revision: 51ec9c6f7c33c30d72619cd0a4fae78eefc51bf7
-  branch: api
+  revision: c611804a9d6e8621def91c47ca9f42b295f89d96
   specs:
     api_flashcards (0.1.0)
       rails (~> 5.1)
@@ -73,6 +72,7 @@ GEM
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
     chronic (0.10.2)
+    cliver (0.3.2)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -200,6 +200,10 @@ GEM
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
     pg (0.21.0)
+    poltergeist (1.15.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      websocket-driver (>= 0.2.0)
     pry (0.11.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -364,6 +368,7 @@ DEPENDENCIES
   newrelic_rpm
   nokogiri
   pg
+  poltergeist
   pry
   puma
   pundit

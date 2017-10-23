@@ -39,9 +39,7 @@ class Card < ApplicationRecord
   def self.pending_cards_notification
     users = User.where.not(email: nil)
     users.each do |user|
-      if user.cards.pending.any?
-        CardsMailer.pending_cards_notification(user.email).deliver
-      end
+      SendUserMailJob.perform_later(user.email) if user.cards.pending.any?
     end
   end
 
