@@ -5,6 +5,9 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'support/helpers/login_helper'
 require 'support/helpers/trainer_helper'
+require 'capybara/poltergeist'
+require 'support/capybara_config'
+require 'support/active_job'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 

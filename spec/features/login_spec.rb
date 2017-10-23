@@ -5,7 +5,7 @@ RSpec.feature 'User authentication', type: :feature do
     visit root_path
   end
 
-  let!(:user) { create(:user) }
+  let(:user) { create(:user) }
 
   scenario 'require_login root' do
     expect(page).to have_content 'Добро пожаловать.'
