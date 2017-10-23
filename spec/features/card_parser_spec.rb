@@ -1,5 +1,5 @@
 require 'rails_helper'
-WebMock.disable_net_connect!(allow_localhost: true)
+WebMock.allow_net_connect!
 
 RSpec.feature 'Cards Parser' do
   before do
@@ -8,7 +8,7 @@ RSpec.feature 'Cards Parser' do
     login(user, 'Войти')
   end
 
-  scenario 'user fills forms right', js: true do
+  scenario 'user fills forms right' do
     stub_request(:get, /most_common_words_5.htm/)
         .to_return(body: File.new('./spec/support/most_common_words.html'), status: 200)
 
@@ -19,7 +19,7 @@ RSpec.feature 'Cards Parser' do
     expect(page).to have_content 'Редактировать'
   end
 
-  scenario 'user enters invalid url', js: true do
+  scenario 'user enters invalid url' do
     stub_request(:get, /moooost_common_words_5.htm/).to_return(status: [404, 'Not Found'])
 
     fill_in 'url', with: 'http://masterrussian.com/vocabulary/moooost_common_words_5.htm'
@@ -29,7 +29,7 @@ RSpec.feature 'Cards Parser' do
     expect(page).not_to have_content 'Редактировать'
   end
 
-  scenario 'user enters invalid xpath', js: true do
+  scenario 'user enters invalid xpath' do
     stub_request(:get, /most_common_words_5.htm/)
         .to_return(body: File.new('./spec/support/most_common_words.html'), status: 200)
 
