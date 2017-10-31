@@ -1,8 +1,11 @@
 module Dashboard
   class FlickrController < Dashboard::BaseController
     def search_photos
-      photos = Flickr.photos.search(text: flickr_params[:text], per_page: 10)
-      build_urls(photos)
+      Rails.cache.fetch("#{flickr_params[:text]}/flickr_photos", expires_in: 6.hours) do
+        photos = Flickr.photos.search(text: flickr_params[:text], per_page: 10)
+        build_urls(photos)
+      end
+
       respond_to do |format|
         format.js
         format.html { render partial: 'photos', photos: @photos }
