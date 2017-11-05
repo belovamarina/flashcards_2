@@ -14,6 +14,7 @@ module Home
       @user = User.new(user_params)
       if @user.save
         auto_login(@user)
+        ahoy.track 'User registration', title: "New user: #{@user.email}"
         redirect_to root_path, notice: t(:user_created_successfully_notice)
       else
         respond_with @user
