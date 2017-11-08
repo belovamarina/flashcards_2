@@ -31,4 +31,8 @@ class ApplicationController < ActionController::Base
     flash[:alert] = 'You are not authorized to perform this action.'
     redirect_to(request.referrer || main_app.root_path)
   end
+
+  def require_admin
+    current_user && current_user.has_role?(:admin)
+  end
 end

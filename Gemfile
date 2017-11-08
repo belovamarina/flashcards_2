@@ -15,6 +15,7 @@ gem 'jquery-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'ahoy_matey'
+gem 'blazer'
 gem 'carrierwave'
 gem 'delayed_job_active_record'
 gem 'faraday'

@@ -69,6 +69,10 @@ GEM
       uuidtools
     arel (8.0.0)
     bcrypt (3.1.11)
+    blazer (1.8.0)
+      chartkick
+      rails
+      safely_block (>= 0.1.1)
     browser (2.5.2)
     builder (3.2.3)
     byebug (9.1.0)
@@ -83,6 +87,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    chartkick (2.2.5)
     chronic (0.10.2)
     cliver (0.3.2)
     coderay (1.1.2)
@@ -387,6 +392,7 @@ PLATFORMS
 DEPENDENCIES
   ahoy_matey
   api_flashcards!
+  blazer
   byebug
   capybara
   carrierwave

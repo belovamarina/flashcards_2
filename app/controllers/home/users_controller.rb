@@ -14,7 +14,7 @@ module Home
       @user = User.new(user_params)
       if @user.save
         auto_login(@user)
-        ahoy.track 'User registration', title: "New user: #{@user.email}"
+        ahoy.track 'users_create', title: "New user: #{@user.email}"
         redirect_to root_path, notice: t(:user_created_successfully_notice)
       else
         respond_with @user
@@ -24,7 +24,7 @@ module Home
     private
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation, :locale)
     end
   end
 end
