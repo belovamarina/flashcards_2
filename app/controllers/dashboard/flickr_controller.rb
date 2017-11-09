@@ -6,6 +6,8 @@ module Dashboard
         build_urls(photos)
       end
 
+      ahoy.track 'flickr_search_photos', title: "User's search: #{flickr_params[:text]}"
+
       respond_to do |format|
         format.js
         format.html { render partial: 'photos', photos: @photos }

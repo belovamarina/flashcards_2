@@ -3,7 +3,7 @@ FactoryBot.define do
     "person#{n}@example.com"
   end
 
-  factory :user do
+  factory :user, class: User do
     email
     password '12345'
     password_confirmation '12345'

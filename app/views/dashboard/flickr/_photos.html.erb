@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-
-  <% photos.each do |photo| %>
-    <div class="col-md-4 flickr-photo">
-      <%= image_tag(photo, class: 'img-responsive flickr', size: '350x350') %>
-    </div>
+  <% if photos %>
+    <% photos.each do |photo| %>
+      <div class="col-md-4 flickr-photo">
+        <%= image_tag(photo, class: 'img-responsive flickr', size: '350x350') %>
+      </div>
+    <% end %>
   <% end %>
-
   </div>
 </div>

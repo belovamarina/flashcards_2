@@ -24,6 +24,7 @@ module Dashboard
                             original_text: @card.original_text,
                             translated_text: @card.translated_text)
         end
+        ahoy.track 'trainer_card_review', title: "User's answer: #{trainer_params[:user_translation]}"
         redirect_to trainer_path
       else
         flash[:alert] = t(:incorrect_translation_alert)

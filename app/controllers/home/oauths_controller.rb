@@ -16,6 +16,7 @@ module Home
           @user = create_from(provider)
           reset_session
           auto_login(@user)
+          ahoy.track 'oauths_callback', title: "User login from: #{provider.titleize}"
           redirect_to trainer_path, notice: (t 'log_in_is_successful_provider_notice',
                                                provider: provider.titleize)
         rescue

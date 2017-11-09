@@ -13,5 +13,13 @@
                 label: t(:password_confirmation_label),
                 input_html: { class: 'form-control', required: true } %>
   </div>
+  <div class="form-group">
+    <%= f.input :locale, priority: I18n.default_locale,
+                collection: I18n.available_locales,
+                include_blank: false,
+                include_hidden: false,
+                label: 'Локаль',
+                input_html: { class: 'form-control', required: true } %>
+  </div>
   <%= f.button :submit, t(:sing_up_label), class: 'btn btn-default' %>
 <% end %>
