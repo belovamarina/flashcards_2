@@ -4,6 +4,11 @@ services:
     image: postgres:9.4.1
     ports:
       - "5432:5432"
+  redis:
+    image: "redis:alpine"
+    command: redis-server
+    ports:
+      - "6379"
 
   web:
     build: .
@@ -12,7 +17,9 @@ services:
       - "3000:3000"
     links:
       - db
+      - redis
     volumes:
       - .:/flashcards_2
     depends_on:
       - db
+      - redis
