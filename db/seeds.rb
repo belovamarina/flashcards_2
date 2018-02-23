@@ -14,6 +14,8 @@ user = User.create(email: 'admin@example.com',
                    locale: 'ru')
 user.add_role :admin
 
+user.blocks.create(title: 'block1')
+
 Blazer::Query.create(creator_id: user.id,
                      name: 'Visits',
                      statement: %q(SELECT * FROM "visits" ORDER BY started_at DESC LIMIT 10),

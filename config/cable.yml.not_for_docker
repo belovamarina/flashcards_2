@@ -1,0 +1,9 @@
+redis: &redis
+  adapter: redis
+  host: redis
+  url: redis://localhost:6379/1
+
+production: *redis
+development: *redis
+test:
+  adapter: async
